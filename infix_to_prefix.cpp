@@ -6,6 +6,11 @@ int main()
    cin>>t;
    while(t--){
        string s;
+        cout<<"See the question link for prescribed input\n";
+       /*
+        http://www.spoj.com/problems/ONP/
+        but the program calculates the prefix not postfix
+       */
        cin>>s;
        stack<int> st;
        for(int i=0;i<s.size();++i){

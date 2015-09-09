@@ -7,6 +7,10 @@ int main()
    cin>>t;
    while(t--){
        string s,s1;
+       cout<<"See the question link for prescribed input\n";
+       /*
+        http://www.spoj.com/problems/ONP/
+       */
        cin>>s;
        stack<int> st;
        for(int i=0;i<s.size();++i){
