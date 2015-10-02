@@ -6,6 +6,7 @@ int main() {
     ios::sync_with_stdio(0);
     /*
     Question - https://www.hackerrank.com/contests/code-cpp-september-2015/challenges/deque-stl
+    Improvement of sliding window
     */
     int t;
     cin>>t;
