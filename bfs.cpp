@@ -1,46 +1,44 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
-int level[11],visited[11]={0};
-vector<int> vertex[11];
-
-void bfs(int source)
- {
-    queue<int> q;
-    q.push(source);
-    level[source]=0;
-    visited[source]=1;
-    while(q.size())
-    {
-     int node=q.front(); q.pop();
-
-    for(int i=0;i<vertex[node].size();++i)        // push all immediate nodes in queue and mark them visited along with level
-       if(!visited[vertex[node][i]])
-        {
-          level[vertex[node][i]]=level[node]+1;
-          visited[vertex[node][i]]=1;
-          q.push(vertex[node][i]);
-        }
+void bfs(int s,vector<int> a[],int mark[]){
+  queue<int> q;
+   q.push(s);
+   mark[s]=0;
+  while(q.size()){
+   for(int i=0;i<a[q.front()].size();++i){
+       if(mark[a[q.front()][i]]==-1)
+       {mark[a[q.front()][i]]=1+mark[q.front()];
+        q.push(a[q.front()][i]);
+       }
     }
- }
+   q.pop();
+  }
+}
 
-
-int main()
-{
-int n,e;
-cin>>n>>e;
-int x,y;
- for(int i=0;i<e;++i){
-  cin>>x>>y;
-  vertex[x].push_back(y);
-  vertex[y].push_back(x);
- }
-
- int source;
- cin>>source;
-  bfs(source);
-
- for(int i=1;i<=n;++i)
-   cout<<level[i]<<" ";
-return 0;
+int main() {
+    int t;
+    cin>>t;  // Number of test cases
+    while(t--){
+        int n,m;
+        cin>>n>>m;  // Number of nodes and edges
+        vector<int> a[n+1];
+        int mark[n+1];
+        for(int i=1;i<=n;++i)
+           mark[i]=-1;
+        int x,y;
+        for(int i=0;i<m;++i){
+            cin>>x>>y;  // Edges
+            a[x].push_back(y);
+            a[y].push_back(x);
+        }
+       int s;
+       cin>>s;   // Source node
+       bfs(s,a,mark);
+       for(int i=1;i<=n;++i){
+            printf("%d ",mark[i]);   // Level of each node from the source node
+       }
+       printf("\n");
+    }
+    return 0;
 }
