@@ -25,16 +25,43 @@ def LCSDP(a,b):
         return cache[(a, b)]
 
 
+# TABLOID
+
+def LCST(a,b):
+    dp = [[0]*(len(b)+1) for _ in xrange(len(a)+1)]
+    for i in xrange(0,len(a)):
+        for j in xrange(0,len(b)):
+            if a[i]==b[j]:
+                dp[i+1][j+1]=dp[i][j] + 1
+            else:
+                dp[i+1][j+1]=max(dp[i][j+1],dp[i+1][j])
 
 
-a = "abcefghijklmn"
-b = "abxdfxxxxxxxxxxin"
+    i,j,ans=len(a),len(b),""
+    while i>=1 and j>=1:
+        if dp[i][j]==dp[i-1][j-1]+1:
+            ans = a[i-1]+ans
+            i-=1
+            j-=1
+        elif dp[i][j]==dp[i-1][j]:
+            i-=1
+        else:
+            j-=1
+    print ans
+
+
+a = "aaxxxbacdeafaag"
+b = "axbxxcyydfewfsg"
 
 start_time = time.time()
-print LCS(a, b)
+# print LCS(a, b)
 print("--- %s seconds ---" % (time.time() - start_time))
 
 
 start_time = time.time()
 print LCSDP(a, b)
+print("--- %s seconds ---" % (time.time() - start_time))
+
+start_time = time.time()
+print LCST(a, b)
 print("--- %s seconds ---" % (time.time() - start_time))

@@ -35,7 +35,7 @@ def LPSDP(a, ans):
     return cache[a]
 
 
-s="akshdbcbshkdhdhsgeywuiw"
+s="geekswaekeedg"
 
 start_time = time.time()
 print LPS(s, "")

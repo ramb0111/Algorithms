@@ -45,13 +45,13 @@ def ffDP(w,v,W):
 
 
 
-v=[60,100,120,100,100]
-w=[1,1,5,4,2]
-W = 6
+v=[60,100,120,100,100,60,100,120,100,100,60,100,120,100,100,60,100,120,100,100]
+w=[1,1,5,4,2,1,1,5,4,2,1,1,5,4,2]
+W = 600
 
-start_time = time.time()
-print f(w,v,W)
-print("--- %s seconds ---" % (time.time() - start_time))
+# start_time = time.time()
+# print f(w,v,W)
+# print("--- %s seconds ---" % (time.time() - start_time))
 
 start_time = time.time()
 print fDP(w,v,W)
